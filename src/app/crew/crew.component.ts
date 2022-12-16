@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crew.component.css']
 })
 export class CrewComponent implements OnInit {
-  crew: object[] = [
+  crew: Crew[] = [
     {name: "Eileen Collins", firstMission: false},
     {name: "Mae Jemison", firstMission: false},
     {name: "Ellen Ochoa", firstMission: true}
   ];
-
+  
   memberBeingEdited: object = null;
 
   constructor() { }
@@ -24,7 +24,7 @@ export class CrewComponent implements OnInit {
     }
   }
 
-  remove(member: object) {
+  remove(member: Crew) {
     let index = this.crew.indexOf(member);
     this.crew.splice(index, 1);
   }
@@ -41,11 +41,18 @@ export class CrewComponent implements OnInit {
   }
 
   memberExists(name: string): boolean {
-    for (let i=0; i < this.crew.length; i++) {
-      if (this.crew[i].name === name) {
-        return true;
+    for (let member of this.crew) {
+      if (member.name === name) {
+        return true
       }
     }
+    // for (let i=0; i < this.crew.length; i++) {
+    //   if (this.crew[i].name === name) {
+    //     return true;
+    //   }
+    // }
     return false;
   }
 }
+
+interface Crew {name: string, firstMission: boolean}

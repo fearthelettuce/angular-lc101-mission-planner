@@ -1,8 +1,5 @@
 <h3>Crew</h3>
 <ul>
-  <li>Jessica Watkins</li>
-  <li>Raja Chari</li>
-  <li>Jasmin Moghbeli</li>
   <li *ngFor="let member of crew">
     <span *ngIf="memberBeingEdited !== member; else elseBlock">
       <!-- display state of member -->
